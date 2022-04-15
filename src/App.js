@@ -22,12 +22,13 @@ function App() {
   // }
 
   const handleImgClick = (e) => {
+    console.log(e);
     const coords =  {
       x: e.pageX,
-      y: e.pageY - e.target.offsetHeight,
+      y: e.pageY// - e.target.offsetHeight,
     }
     console.log(coords);
-    checkCoords(coords);
+    //checkCoords(coords);
   }
 
   async function checkCoords(coords) {
@@ -46,7 +47,8 @@ function App() {
 
   return (
     <div className="App">
-      <button>Add Data (use once per person during setup)</button>
+      <button style={{display: 'block'}}>tgtg</button>
+      <button>fdfsfs</button>
       <div className="main-container" onClick={handleImgClick}>
         <img alt="background" className="background-img" src={backgroundImage} />
         <div className="targeting-box"></div>
@@ -63,7 +65,7 @@ export default App;
 
 /*
   e.pageX, e.pageY-e.target.offsetHeight
-  WALDO: (591:627, 739:775)
-  ODLAW:
+  WALDO: (1623:1659 , 825:885)
+  ODLAW:(591:627, 739:775)
   WIZARD: 
 */

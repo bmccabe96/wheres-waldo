@@ -10,10 +10,10 @@
 
 .targeting-box {
   position: absolute;
-  top: 755px;
-  left: 591px;
+  top: 900px;
+  left: 119px;
   display: inline-block;
   border: 1px solid red;
-  width: 35px;
-  height: 35px;
+  width: 24px;
+  height: 45px;
 }
