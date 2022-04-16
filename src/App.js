@@ -1,61 +1,57 @@
+import React, { useState } from "react";
+import Canvas from "./components/Canvas";
 import db from "./utils/firebase";
-import { collection, query, orderBy, doc, getDocs, where, addDoc } from "@firebase/firestore"
-import backgroundImage from './assets/wheres-waldo-img.jpeg';
-import styled from "styled-components";
+import { collection, query, getDocs, where } from "@firebase/firestore"
 import "./App.css";
 
 
 function App() {
 
-  // const addData = async () => {
-  //   for(let x=85; x<=86; x++) {
-  //     for(let y=71; y<=77; y++) {
-  //       await addDoc(collection(db, 'locations'), {
-  //         name: 'waldo',
-  //         level: 1,
-  //         x: x/100,
-  //         y: y/100
-  //       });
-  //       console.log("added: ", x/100, y/100);
-  //     }
-  //   }
-  // }
+  const [targetBoxCoords, setTargetBoxCoords] = useState(null);
+  const [characterList, setCharacterList] = useState(['waldo', 'odlaw', 'wizard']);
+  const [currentCoords, setCurrentCoords] = useState(null);
 
-  const handleImgClick = (e) => {
+  const openTargetBox = (e) => {
     let rect = e.target.getBoundingClientRect();
     let x = e.clientX - rect.left; //x position within the element.
     let y = e.clientY - rect.top;  //y position within the element.
+    setTargetBoxCoords({ x, y });
     const coords =  {
       x: Number((x / e.target.offsetWidth).toFixed(2)),
       y: Number((y / e.target.offsetHeight).toFixed(2))
     }
-    console.log(coords);
-    checkCoords(coords);
+    setCurrentCoords(coords);
   }
 
-  async function checkCoords(coords) {
+  async function checkCoords(characterSelection) {
+    console.log(characterSelection);
     const locations = collection(db, "locations");
     const q = query(
       locations, 
-      where("name", "in", ['waldo', 'odlaw', 'wizard']),
-      where("x", "==", coords.x),
-      where("y", "==", coords.y),
+      where("name", "==", characterSelection),
+      where("x", "==", currentCoords.x),
+      where("y", "==", currentCoords.y),
     );
     const snapshot = await getDocs(q);
     snapshot.forEach((doc) => {
       console.log(doc.id, "=>", doc.data());
+      if(doc.data().name === characterSelection) {
+        const newCharacterList = characterList.filter((char) => char !== characterSelection);
+        setCharacterList(newCharacterList);
+      }
     });
   }
 
+  
+
   return (
     <div className="App">
-      <button style={{display: 'block'}}>tgtg</button>
-      <button style={{display: 'block'}}>tgtg</button>
-      <button style={{display: 'block'}}>tgtg</button>
-      <button style={{display: 'block'}}>tgtg</button>
-      <div className="main-container" onClick={handleImgClick}>
-        <img alt="background" className="background-img" src={backgroundImage} />
-      </div>
+      <Canvas 
+        openTargetBox={openTargetBox}
+        checkCoords={checkCoords}
+        targetBoxCoords={targetBoxCoords}
+        characterList={characterList}
+      />
     </div>
   );
 }

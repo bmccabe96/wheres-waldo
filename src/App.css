@@ -8,12 +8,7 @@
   position: relative;
 }
 
-.targeting-box {
-  position: absolute;
-  top: 900px;
-  left: 119px;
-  display: inline-block;
-  border: 1px solid red;
-  width: 24px;
-  height: 45px;
+.main-container > img {
+  cursor: url('./assets/target-12200.png'), auto;
 }
+
