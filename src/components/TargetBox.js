@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import { capitalizeFirstLetter } from "../utils/capitalize";
 
 const TargetBox = (props) => {
 
@@ -12,13 +13,13 @@ const TargetBox = (props) => {
   if (targetBoxCoords) {
     
     return (
-      <Box x={targetBoxCoords.x} y={targetBoxCoords.y}>
+      <Box className="target-box" x={targetBoxCoords.x} y={targetBoxCoords.y}>
         {characterList.map((char, index) => {
           return (
             <button 
               key={index}
-              onClick={() => checkCoords(char)}
-            >{char}</button>
+              onClick={(e) => checkCoords(e, char)}
+            >{capitalizeFirstLetter(char)}</button>
           )
         })}
       </Box>
@@ -33,11 +34,12 @@ const Box = styled.div`
   left: ${(props) => (props.x + 10)}px;
   width: 100px;
   height: auto;
-  border: 2px solid red;
   display: flex;
   flex-direction: column;
   color: white;
   background-color: black;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  padding: 3px;
 `
 
 
