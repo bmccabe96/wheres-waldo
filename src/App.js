@@ -1,20 +1,24 @@
 import React, { useEffect, useState } from "react";
 import Canvas from "./components/Canvas";
+import HeaderLevel from "./components/HeaderLevel";
 import db from "./utils/firebase";
 import { collection, query, getDocs, where } from "@firebase/firestore"
 import "./App.css";
-
+import waldo from './assets/waldo.png';
+import odlaw from './assets/odlaw.png';
+import wizard from './assets/wizard.png';
 
 function App() {
 
   const [targetBoxCoords, setTargetBoxCoords] = useState(null);
-  const [characterList, setCharacterList] = useState(['waldo', 'odlaw', 'wizard']);
+  const [characterList, setCharacterList] = useState([
+    { name: 'waldo', img: waldo },
+    { name: 'odlaw', img: odlaw },
+    { name: 'wizard', img: wizard },
+  ]);
   const [currentCoords, setCurrentCoords] = useState(null);
 
-  useEffect(() => {
-
-  })
-
+  
   const openTargetBox = (e) => {
     if(e.target.parentElement.children.length > 1) {
       setTargetBoxCoords(null);
@@ -44,7 +48,7 @@ function App() {
     const snapshot = await getDocs(q);
     snapshot.forEach((doc) => {
       if(doc.data().name === characterSelection) {
-        const newCharacterList = characterList.filter((char) => char !== characterSelection);
+        const newCharacterList = characterList.filter((char) => char.name !== characterSelection);
         setCharacterList(newCharacterList);
       }
     });
@@ -55,6 +59,7 @@ function App() {
 
   return (
     <div className="App">
+      <HeaderLevel level={1} characterList={characterList}/>
       <Canvas 
         openTargetBox={openTargetBox}
         checkCoords={checkCoords}

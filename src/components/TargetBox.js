@@ -18,8 +18,8 @@ const TargetBox = (props) => {
           return (
             <button 
               key={index}
-              onClick={(e) => checkCoords(e, char)}
-            >{capitalizeFirstLetter(char)}</button>
+              onClick={(e) => checkCoords(e, char.name)}
+            >{capitalizeFirstLetter(char.name)}</button>
           )
         })}
       </Box>
