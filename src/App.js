@@ -1,5 +1,5 @@
 import db from "./utils/firebase";
-import { collection, query, orderBy, doc, getDocs, where, setDoc } from "@firebase/firestore"
+import { collection, query, orderBy, doc, getDocs, where, addDoc } from "@firebase/firestore"
 import backgroundImage from './assets/wheres-waldo-img.jpeg';
 import styled from "styled-components";
 import "./App.css";
@@ -8,34 +8,36 @@ import "./App.css";
 function App() {
 
   // const addData = async () => {
-
-  //   for(let x=591; x<=627; x++) {
-  //     for(let y=739; y<=775; y++) {
-  //       await setDoc(doc(db, "locations", `${'odlaw-' + x + '-' + y}`), {
-  //         name: 'odlaw',
+  //   for(let x=85; x<=86; x++) {
+  //     for(let y=71; y<=77; y++) {
+  //       await addDoc(collection(db, 'locations'), {
+  //         name: 'waldo',
   //         level: 1,
-  //         x: x,
-  //         y: y
+  //         x: x/100,
+  //         y: y/100
   //       });
+  //       console.log("added: ", x/100, y/100);
   //     }
   //   }
   // }
 
   const handleImgClick = (e) => {
-    console.log(e);
+    let rect = e.target.getBoundingClientRect();
+    let x = e.clientX - rect.left; //x position within the element.
+    let y = e.clientY - rect.top;  //y position within the element.
     const coords =  {
-      x: e.pageX,
-      y: e.pageY// - e.target.offsetHeight,
+      x: Number((x / e.target.offsetWidth).toFixed(2)),
+      y: Number((y / e.target.offsetHeight).toFixed(2))
     }
     console.log(coords);
-    //checkCoords(coords);
+    checkCoords(coords);
   }
 
   async function checkCoords(coords) {
     const locations = collection(db, "locations");
     const q = query(
       locations, 
-      where("name", "==", 'odlaw'),
+      where("name", "in", ['waldo', 'odlaw', 'wizard']),
       where("x", "==", coords.x),
       where("y", "==", coords.y),
     );
@@ -48,10 +50,11 @@ function App() {
   return (
     <div className="App">
       <button style={{display: 'block'}}>tgtg</button>
-      <button>fdfsfs</button>
+      <button style={{display: 'block'}}>tgtg</button>
+      <button style={{display: 'block'}}>tgtg</button>
+      <button style={{display: 'block'}}>tgtg</button>
       <div className="main-container" onClick={handleImgClick}>
         <img alt="background" className="background-img" src={backgroundImage} />
-        <div className="targeting-box"></div>
       </div>
     </div>
   );
@@ -63,9 +66,3 @@ function App() {
 export default App;
 
 
-/*
-  e.pageX, e.pageY-e.target.offsetHeight
-  WALDO: (1623:1659 , 825:885)
-  ODLAW:(591:627, 739:775)
-  WIZARD: 
-*/
