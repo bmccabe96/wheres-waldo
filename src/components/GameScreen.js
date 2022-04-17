@@ -9,6 +9,7 @@ import odlaw from '../assets/odlaw.png';
 import wizard from '../assets/wizard.png';
 
 
+
 const GameScreen = (props) => {
 
   const [targetBoxCoords, setTargetBoxCoords] = useState(null);
@@ -23,7 +24,7 @@ const GameScreen = (props) => {
   const [score, setScore] = useState(null);
 
   const level = props.level;
-
+  const navigate = props.navigate;
 
   useEffect(() => {
     if(characterList.length === 0) {
@@ -95,17 +96,23 @@ const GameScreen = (props) => {
 
   async function submitScore(e) {
     e.preventDefault();
+    e.stopPropagation();
     const name = e.target[0].value;
     await addDoc(collection(db, 'leaderboards'), {
       level: level,
       name: name,
       time: score,
     });
+    navigate("/leaderboards");
+  }
+
+  const headHome = () => {
+    navigate("/");
   }
 
   return (
     <div className="game-screen">
-      <HeaderLevel level={1} characterList={characterList}/>
+      <HeaderLevel level={1} characterList={characterList} headHome={headHome}/>
       <Canvas 
         openTargetBox={openTargetBox}
         checkCoords={checkCoords}

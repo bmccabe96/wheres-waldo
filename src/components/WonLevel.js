@@ -1,5 +1,7 @@
 import React from "react";
 import styled from "styled-components";
+import { Link } from 'react-router-dom';
+
 
 const WonLevel = (props) => {
 
@@ -16,6 +18,7 @@ const WonLevel = (props) => {
           Submit Score: 
           <input type="text" name="name" placeholder="name"/>
         </label>
+        
         <input type="submit" value="Submit" />
       </form>
     </Container>

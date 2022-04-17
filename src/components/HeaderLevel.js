@@ -7,10 +7,11 @@ const HeaderLevel = (props) => {
 
   const characterList = props.characterList;
   const level = props.level;
+  const headHome = props.headHome;
 
   return (
     <Container>
-      <button className="btn" style={myBtnStyle}>Home</button>
+      <button onClick={headHome} className="btn" style={myBtnStyle}>Home</button>
       <div>Level: {level}</div>
       <CharacterList>
       <div>Remaining:</div>
