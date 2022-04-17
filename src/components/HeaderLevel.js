@@ -16,7 +16,7 @@ const HeaderLevel = (props) => {
       <div>Remaining:</div>
         {characterList.map((char, index) => {
           return (
-            <CharacterContainer>
+            <CharacterContainer key={index}>
               <div>{capitalizeFirstLetter(char.name)}</div>
               <ImgContainer>
                 <img alt={char.name} src={char.img} style={myImgStyle}/>
@@ -32,7 +32,6 @@ const HeaderLevel = (props) => {
 export default HeaderLevel;
 
 const Container = styled.div`
-  width: 100%;
   height: auto;
   background-color: white;
   display: flex;
@@ -41,10 +40,10 @@ const Container = styled.div`
   gap: 10vw;
   border-bottom: 5px solid red;
   border-top: 5px solid red;
-  position: fixed;
-  top: 0;
-  left: 0;
-  z-index: 100;
+  // position: fixed;
+  // top: 0;
+  // left: 0;
+  // z-index: 100;
 `
 
 const CharacterList = styled.div`

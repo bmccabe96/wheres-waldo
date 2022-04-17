@@ -6,8 +6,14 @@
   width: fit-content;
 }
 
+.game-screen {
+  position: relative;
+}
+
 .main-container {
   position: relative;
+  height: auto;
+  width: 100vw;
 }
 
 .main-container > img {
