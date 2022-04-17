@@ -22,11 +22,13 @@ const GameScreen = (props) => {
   const [currentGame, setCurrentGame] = useState(() => startRound());
   const [score, setScore] = useState(null);
 
+  const level = props.level;
+
 
   useEffect(() => {
     if(characterList.length === 0) {
-      finishRound();
-      getScore();
+      finishRound(); //this updates matches DB
+      getScore(); //this reads score from matches DB and then opens the WonLevel screen
     }
   }, [characterList]);
 
@@ -94,7 +96,11 @@ const GameScreen = (props) => {
   async function submitScore(e) {
     e.preventDefault();
     const name = e.target[0].value;
-    console.log(name, score);
+    await addDoc(collection(db, 'leaderboards'), {
+      level: level,
+      name: name,
+      time: score,
+    });
   }
 
   return (
@@ -106,7 +112,7 @@ const GameScreen = (props) => {
         targetBoxCoords={targetBoxCoords}
         characterList={characterList}
       />
-      {foundAll ? <WonLevel submitScore={submitScore} score={score}/> : null}
+      {foundAll ? <WonLevel submitScore={submitScore} score={score} level={level}/> : null}
     </div>
   )
 }

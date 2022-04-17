@@ -5,9 +5,11 @@ const WonLevel = (props) => {
 
   const score = props.score;
   const submitScore = props.submitScore;
+  const level = props.level;
 
   return (
     <Container>
+      <div>Level: {level}</div>
       <div>You got {score}</div>
       <form onSubmit={(e) => submitScore(e)}>
         <label>

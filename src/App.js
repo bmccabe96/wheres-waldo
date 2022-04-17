@@ -7,7 +7,7 @@ function App() {
 
   return (
     <div className="App">
-      <GameScreen />
+      <GameScreen level={1}/>
     </div>
   );
 }
