@@ -4,20 +4,14 @@ import HeaderLevel from "./HeaderLevel";
 import WonLevel from "./WonLevel";
 import db from "../utils/firebase";
 import { collection, query, getDocs, where, addDoc, updateDoc, doc, getDoc } from "@firebase/firestore";
-import waldo from '../assets/waldo.png';
-import odlaw from '../assets/odlaw.png';
-import wizard from '../assets/wizard.png';
+
 
 
 
 const GameScreen = (props) => {
 
   const [targetBoxCoords, setTargetBoxCoords] = useState(null);
-  const [characterList, setCharacterList] = useState([
-    { name: 'waldo', img: waldo },
-    { name: 'odlaw', img: odlaw },
-    { name: 'wizard', img: wizard },
-  ]);
+  const [characterList, setCharacterList] = useState(props.characterList);
   const [currentCoords, setCurrentCoords] = useState(null);
   const [foundAll, setFoundAll] = useState(false);
   const [currentGame, setCurrentGame] = useState(() => startRound());
