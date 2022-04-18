@@ -11,7 +11,7 @@ const LevelCard = (props) => {
 
   return (
     <Card onClick={() => handleLevelSelect(level, characterList)}>
-      <h2>Level: {level}</h2>
+      <h3>Level: {level}</h3>
       <ImgContainer>
         <img alt={`level ${level}`} src={img} style={myImgStyle} />
       </ImgContainer>

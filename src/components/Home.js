@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import LevelCard from "./LevelCard";
+import HeaderHome from "./HeaderHome";
 import waldo from '../assets/waldo.png';
 import odlaw from '../assets/odlaw.png';
 import wizard from '../assets/wizard.png';
@@ -9,7 +10,7 @@ import levelOneImg from '../assets/wheres-waldo-img.jpeg';
 
 const Home = (props) => {
 
-  const navigate = props.navigate;
+  const leaderboards = props.handleLeaderBoardsClick;
   const handleLevelSelect = props.handleLevelSelect;
 
   const levelOneCharacters = [
@@ -21,15 +22,31 @@ const Home = (props) => {
 
   return (
     <HomeContainer>
+      <HeaderHome />
+      <button onClick={() => leaderboards()} style={myBtnStyle}>Leaderboards</button>
       <CardContainer>
         <LevelCard level={1} img={levelOneImg} handleLevelSelect={handleLevelSelect} characterList={levelOneCharacters} />
-        <LevelCard level={2} />
-        <LevelCard level={3} />
-        <LevelCard level={4} />
+        <LevelCard level={"TBD"} />
+        <LevelCard level={"TBD"} />
+        <LevelCard level={"TBD"} />
       </CardContainer>
     </HomeContainer>
   )
 }
+
+const myBtnStyle = {
+  height: 'fit-content',
+  color: 'white',
+  cursor: 'pointer',
+  padding: '5px 15px',
+  backgroundColor: 'red',
+  borderRadius: '8px',
+  border: 'none',
+  boxShadow: "rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px",
+  width: '125px',
+  justifySelf: 'center',
+  marginTop: '20px'
+};
 
 const HomeContainer = styled.div`
   display: grid;

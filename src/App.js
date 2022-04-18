@@ -21,18 +21,33 @@ function App() {
     navigate("/gamelevel");
   }
 
+  const handleLeaderBoardsClick = () => {
+    navigate("/leaderboards");
+  }
+
   return (
     <div className="App">
       <Routes>
         <Route 
           path="/" 
-          element={<Home navigate={navigate} handleLevelSelect={handleLevelSelect}/>} />
+          element={<Home 
+            navigate={navigate} 
+            handleLevelSelect={handleLevelSelect}
+            handleLeaderBoardsClick={handleLeaderBoardsClick}
+          />} 
+        />
         <Route 
           path="/gamelevel" 
-          element={<GameScreen level={level} characterList={characterList} navigate={navigate} />} />
+          element={<GameScreen 
+            level={level} 
+            characterList={characterList} 
+            navigate={navigate} 
+          />} 
+        />
         <Route 
           path="/leaderboards" 
-          element={<Leaderboards />} />
+          element={<Leaderboards />} 
+        />
       </Routes>
     </div>
   );
