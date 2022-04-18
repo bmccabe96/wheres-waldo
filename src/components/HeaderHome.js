@@ -12,7 +12,7 @@ const HeaderHome = () => {
       <ImgContainer>
         <img alt='waldo left' src={waldoLeft} style={myImgStyle} />
       </ImgContainer>
-      <h3>Where's Waldo?</h3>
+      <Title>Where's Waldo?</Title>
       <ImgContainer>
         <img alt='waldo right' src={waldoRight} style={myImgStyle} />
       </ImgContainer>
@@ -20,6 +20,18 @@ const HeaderHome = () => {
   )
 }
 
+const Title = styled.div`
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 40%;
+  font-weight: bold;
+  height: 65px;
+  padding: 0 10px;
+  background-color: red;
+  color: white;
+`
 
 const Container = styled.div`
   height: auto;
@@ -38,10 +50,14 @@ const Container = styled.div`
 const ImgContainer = styled.div`
   width: 80px;
   height: 65px;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  border-radius: 40%;
+  border: 1px solid rgb(255,0,0, 0.4);
 `
 const myImgStyle = {
   width: '100%',
-  height: '100%'
+  height: '100%',
+  borderRadius: "40%",
 }
 
 

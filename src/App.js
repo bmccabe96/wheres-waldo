@@ -46,7 +46,9 @@ function App() {
         />
         <Route 
           path="/leaderboards" 
-          element={<Leaderboards />} 
+          element={<Leaderboards 
+            navigate={navigate} 
+          />} 
         />
       </Routes>
     </div>
