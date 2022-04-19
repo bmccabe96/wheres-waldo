@@ -10,31 +10,49 @@ const WonLevel = (props) => {
   const level = props.level;
 
   return (
-    <Container>
-      <div>Level: {level}</div>
-      <div>You got {score}</div>
-      <form onSubmit={(e) => submitScore(e)}>
-        <label>
-          Submit Score: 
-          <input type="text" name="name" placeholder="name"/>
-        </label>
-        
-        <input type="submit" value="Submit" />
-      </form>
-    </Container>
+    <CoverBackground>
+      <Container>
+        <h3>Level: {level} - Complete!</h3>
+        <div>You solved in {score} seconds</div>
+        <form onSubmit={(e) => submitScore(e)}>
+          <label>
+            Submit Score: 
+            <input style={{marginLeft: '5px', marginRight: '5px'}} type="text" name="name" placeholder="name"/>
+          </label>
+      
+          <input type="submit" value="Submit" />
+        </form>
+      </Container>
+    </CoverBackground>
   )
 }
 
+const CoverBackground = styled.div`
+  position: absolute;
+  top: 50px;
+  left: 0;
+  height: 100%;
+  width: 100vw;
+  z-index: 100;
+  background: rgba(0, 0, 0, .5);
+`
+
 const Container = styled.div`
   position: absolute;
-  width: 500px;
+  width: auto;
   height: 300px;
-  top: 40%;
+  top: 12rem;
   left: 50%;
   transform: translate(-50%, -50%);
-  border: 1px solid red;
-  color: white;
-  background-color: black;
+  color: black;
+  background-color: white;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  padding: 25px;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
 `
 
 export default WonLevel;

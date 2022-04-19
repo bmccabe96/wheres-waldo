@@ -22,7 +22,6 @@ const Canvas = (props) => {
 const myImgStyle = {
   width: '100%',
   height: 'auto',
-
 }
 
 export default Canvas;

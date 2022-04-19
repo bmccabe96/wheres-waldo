@@ -80,7 +80,6 @@ const DataSection = styled.div`
   width: 60vw;
   height: auto;
   min-height: 200px;
-  max-height: 75vh;
   overflow: auto;
   background-color: white;
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
