@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import GameScreen from "./components/GameScreen";
 import Home from "./components/Home";
 import Leaderboards from "./components/Leaderboards";
-import { BrowserRouter, Routes, Route, HashRouter, useNavigate } from "react-router-dom";
+import {  Routes, Route, useNavigate } from "react-router-dom";
 
 
 
@@ -12,12 +12,14 @@ function App() {
 
   const [level, setLevel] = useState();
   const [characterList, setCharacterList] = useState();
+  const [canvasImg, setCanvasImg] = useState();
 
   let navigate = useNavigate();
 
-  const handleLevelSelect = (level, characterList) => {
+  const handleLevelSelect = (level, characterList, img) => {
     setCharacterList(characterList);
     setLevel(level);
+    setCanvasImg(img);
     navigate("/gamelevel");
   }
 
@@ -42,6 +44,7 @@ function App() {
             level={level} 
             characterList={characterList} 
             navigate={navigate} 
+            img={canvasImg}
           />} 
         />
         <Route 

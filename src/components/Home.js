@@ -6,6 +6,10 @@ import waldo from '../assets/waldo.png';
 import odlaw from '../assets/odlaw.png';
 import wizard from '../assets/wizard.png';
 import levelOneImg from '../assets/wheres-waldo-img.jpeg';
+import levelTwoImg from '../assets/waldo_level2.png';
+import levelThreeImg from '../assets/waldo_level3.png';
+import levelFourImg from '../assets/waldo_level4.png';
+
 
 
 const Home = (props) => {
@@ -19,6 +23,22 @@ const Home = (props) => {
     { name: 'wizard', img: wizard },
   ];
 
+  const levelTwoCharacters = [
+    { name: 'waldo', img: waldo },
+  ];
+
+  const levelThreeCharacters = [
+    { name: 'waldo', img: waldo },
+    { name: 'odlaw', img: odlaw},
+    { name: 'wizard', img: wizard},
+  ];
+
+  const levelFourCharacters = [
+    { name: 'waldo', img: waldo },
+    { name: 'odlaw', img: odlaw},
+    { name: 'wizard', img: wizard},
+  ];
+
 
   return (
     <HomeContainer>
@@ -26,9 +46,9 @@ const Home = (props) => {
       <button onClick={() => leaderboards()} style={myBtnStyle}>Leaderboards</button>
       <CardContainer>
         <LevelCard level={1} img={levelOneImg} handleLevelSelect={handleLevelSelect} characterList={levelOneCharacters} />
-        <LevelCard level={"TBD"} />
-        <LevelCard level={"TBD"} />
-        <LevelCard level={"TBD"} />
+        <LevelCard level={2} img={levelTwoImg} handleLevelSelect={handleLevelSelect} characterList={levelTwoCharacters} />
+        <LevelCard level={3} img={levelThreeImg} handleLevelSelect={handleLevelSelect} characterList={levelThreeCharacters} />
+        <LevelCard level={4} img={levelFourImg} handleLevelSelect={handleLevelSelect} characterList={levelFourCharacters}  />
       </CardContainer>
     </HomeContainer>
   )

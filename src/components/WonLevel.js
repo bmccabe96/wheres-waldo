@@ -46,7 +46,7 @@ const Container = styled.div`
   transform: translate(-50%, -50%);
   color: black;
   background-color: white;
-  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  box-shadow: rgba(0, 0, 0, 0.4) 0px 3px 8px;
   padding: 25px;
   border-radius: 10px;
   display: flex;

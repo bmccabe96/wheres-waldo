@@ -1,11 +1,10 @@
 import React from "react";
-import backgroundImage from '../assets/wheres-waldo-img.jpeg';
 import TargetBox from './TargetBox';
 
 
 const Canvas = (props) => {
 
-  const { openTargetBox, checkCoords, targetBoxCoords, characterList } = props;
+  const { openTargetBox, checkCoords, targetBoxCoords, characterList, backgroundImage } = props;
 
   return (
     <div className="main-container" onClick={openTargetBox}>
@@ -20,8 +19,10 @@ const Canvas = (props) => {
 }
 
 const myImgStyle = {
-  width: '100%',
+  width: '92%',
   height: 'auto',
+  boxShadow: 'rgba(0, 0, 0, 0.5) 0px 3px 8px',
+  marginTop: '8px'
 }
 
 export default Canvas;

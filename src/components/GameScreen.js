@@ -19,6 +19,7 @@ const GameScreen = (props) => {
 
   const level = props.level;
   const navigate = props.navigate;
+  const backgroundImage = props.img;
 
   useEffect(() => {
     if(characterList.length === 0) {
@@ -41,6 +42,7 @@ const GameScreen = (props) => {
         x: Number((x / e.target.offsetWidth).toFixed(2)),
         y: Number((y / e.target.offsetHeight).toFixed(2))
       }
+      console.log(coords);
       setCurrentCoords(coords);
     }
   }
@@ -53,7 +55,7 @@ const GameScreen = (props) => {
       where("name", "==", characterSelection),
       where("x", "==", currentCoords.x),
       where("y", "==", currentCoords.y),
-      where("level", "==", 1)
+      where("level", "==", level)
     );
     const snapshot = await getDocs(q);
     snapshot.forEach((doc) => {
@@ -104,16 +106,34 @@ const GameScreen = (props) => {
     navigate("/");
   }
 
+  //I use this when adding data for a new level
+  // async function addData() {
+  //   for (let x=91; x<=92; x++) {
+  //     for (let y=56; y<=60; y++) {
+  //       console.log(x/100, y/100);
+  //       await addDoc(collection(db, 'locations'), {
+  //         level: 4,
+  //         name: 'odlaw',
+  //         x: x/100,
+  //         y: y/100
+  //       })
+  //     }
+  //   }
+  // }
+
   return (
     <div className="game-screen">
-      <HeaderLevel level={1} characterList={characterList} headHome={headHome}/>
+      <HeaderLevel level={level} characterList={characterList} headHome={headHome}/>
       <Canvas 
         openTargetBox={openTargetBox}
         checkCoords={checkCoords}
         targetBoxCoords={targetBoxCoords}
         characterList={characterList}
+        backgroundImage={backgroundImage}
       />
       {foundAll ? <WonLevel submitScore={submitScore} score={score} level={level}/> : null}
+      {/* use below when adding data for new level */}
+      {/* <button onClick={() => addData()}>ADD DATA</button>  */}
     </div>
   )
 }

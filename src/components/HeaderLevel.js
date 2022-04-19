@@ -12,7 +12,7 @@ const HeaderLevel = (props) => {
   return (
     <Container>
       <button onClick={headHome} className="btn" style={myBtnStyle}>Home</button>
-      <div>Level: {level}</div>
+      <div style={{fontWeight: 'bold'}} >Level: {level}</div>
       <CharacterList>
       <div>Remaining:</div>
         {characterList.map((char, index) => {

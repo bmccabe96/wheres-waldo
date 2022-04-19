@@ -10,7 +10,7 @@ const LevelCard = (props) => {
 
 
   return (
-    <Card onClick={() => handleLevelSelect(level, characterList)}>
+    <Card onClick={() => handleLevelSelect(level, characterList, img)}>
       <h3>Level: {level}</h3>
       <ImgContainer>
         <img alt={`level ${level}`} src={img} style={myImgStyle} />
@@ -24,10 +24,11 @@ const Card = styled.div`
   grid-template-columns: 1fr;
   justify-items: center;
   overflow: auto;
-  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  box-shadow: rgba(0, 0, 0, 0.5) 0px 3px 8px;
   border-left: 5px solid rgb(255,0,0, 0.4);
   padding: 30px 0;
   cursor: pointer;
+  border-top-right-radius: 10%;
 `
 
 const ImgContainer = styled.div`
